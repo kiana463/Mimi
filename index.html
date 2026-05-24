@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mimi 💙</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #e6f1ff;
+        text-align: center;
+        overflow-x: hidden;
+        background: radial-gradient(circle at top, #050b1f, #020614 70%, #01030a);
+    }
+
+    h1 {
+        margin-top: 35px;
+        font-size: 28px;
+        color: #b9dcff;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+        width: 90%;
+        margin: auto;
+        font-size: 17px;
+        line-height: 1.7;
+        color: #d6e9ff;
+        animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid #2f5f9e;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .lightbox img {
+        width: 90%;
+        max-width: 400px;
+        border-radius: 12px;
+        border: 2px solid #4aa3ff;
+    }
+
+    .close {
+        margin-top: 20px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Stars */
+    .star {
+        position: fixed;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: twinkle 3s infinite;
+    }
+
+    @keyframes twinkle {
+        0%,100% {opacity: 0.2;}
+        50% {opacity: 1;}
+    }
+
+    /* Hearts */
+    .heart {
+        position: fixed;
+        width: 14px;
+        height: 14px;
+        background: #3b82f6;
+        transform: rotate(45deg);
+        animation: float 7s linear infinite;
+        opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    .heart::before { top: -7px; left: 0; }
+    .heart::after { left: -7px; top: 0; }
+
+    @keyframes float {
+        0% {transform: translateY(100vh) rotate(45deg); opacity: 0;}
+        50% {opacity: 1;}
+        100% {transform: translateY(-10vh) rotate(45deg); opacity: 0;}
+    }
+
+    /* Glitter */
+    .glitter {
+        position: fixed;
+        width: 2px;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 50%;
+        animation: fall 5s linear infinite;
+        opacity: 0.5;
+    }
+
+    @keyframes fall {
+        0% {transform: translateY(-10vh);}
+        100% {transform: translateY(100vh);}
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>Mimi 💙 You Are Never Alone</h1>
+
+<p>
+You are never alone. I love you so much. We all love you.  
+We are always here for you. You are everything. You are special.  
+Mimi, you are worth so much more than you know.  
+Even on the hardest days, you are deeply cared for. 💙
+</p>
+
+<div class="gallery">
+    <img src="image1.jpg" onclick="openImg(this.src)">
+    <img src="image2.jpg" onclick="openImg(this.src)">
+    <img src="image3.jpg" onclick="openImg(this.src)">
+    <img src="image4.jpg" onclick="openImg(this.src)">
+    <img src="image5.jpg" onclick="openImg(this.src)">
+    <img src="image6.jpg" onclick="openImg(this.src)">
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+    <img id="bigImg">
+    <div class="close">Tap anywhere to close</div>
+</div>
+
+<script>
+    // LIGHTBOX
+    function openImg(src) {
+        document.getElementById("lightbox").style.display = "flex";
+        document.getElementById("bigImg").src = src;
+    }
+
+    function closeImg() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+    // STARS
+    for (let i = 0; i < 60; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(star);
+    }
+
+    // HEARTS
+    function createHeart() {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (5 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+    }
+
+    // GLITTER
+    function createGlitter() {
+        let g = document.createElement("div");
+        g.className = "glitter";
+        g.style.left = Math.random() * 100 + "vw";
+        g.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(g);
+        setTimeout(() => g.remove(), 6000);
+    }
+
+    setInterval(createHeart, 250);
+    setInterval(createGlitter, 120);
+</script>
+
+</body>
+</html>
